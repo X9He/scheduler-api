@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(app) {
-  var schedule = require('../controllers/schedulerController');
+  let schedule = require('../controllers/schedulerController');
 
   // schedule Routes
   app.route('/schedule')

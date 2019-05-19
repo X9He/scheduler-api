@@ -1,6 +1,6 @@
 'use strict';
 
-var mongoose = require('mongoose'), Schedule = mongoose.model('Schedule');
+let mongoose = require('mongoose'), Schedule = mongoose.model('Schedule');
 
 exports.list_all_schedules = function(req, res) {
   Schedule.find({}, (err, schedule) => {
