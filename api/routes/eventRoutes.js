@@ -4,12 +4,12 @@ module.exports = function(app) {
 
   // schedule Routes
   app.route('/event')
-    .get(event.list_all_schedules)
-    .post(event.create_a_schedule);
+    .get(event.list_all_events)
+    .post(event.create_a_event);
 
 
   app.route('/event/:eventId')
-    .get(event.read_a_schedule)
-    .put(event.update_a_schedule)
-    .delete(event.delete_a_schedule);
+    .get(event.read_a_event)
+    .put(event.update_a_event)
+    .delete(event.delete_a_event);
 };
