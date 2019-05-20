@@ -4,7 +4,9 @@ let express = require('express'),
   mongoose = require('mongoose'),
   Events = require('./api/models/eventModel'), //created model loading here
   Users = require('./api/models/userModel'), //created model loading here
-  bodyParser = require('body-parser');
+  bodyParser = require('body-parser'),
+  eventRoutes = require('./api/routes/eventRoutes'),
+  userRoutes = require('./api/routes/userRoutes');
 
 
 const connectionURL = 'mongodb://127.0.0.1:27017';
@@ -16,9 +18,8 @@ mongoose.connect('mongodb://localhost:27017/scheduleDB', { useNewUrlParser: true
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
-let routes = require('./api/routes/eventRoutes'); //importing route
-routes(app); //register the route
+eventRoutes(app);
+userRoutes(app);
 
 
 app.listen(port);
