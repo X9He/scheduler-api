@@ -2,11 +2,11 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-let ScheduleSchema = new Schema({
-    participants: {
-        type: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-        required: true
-    },
+let EventSchema = new Schema({
+    // participants: {
+    //     type: Schema.ObjectId,ref: 'User',
+    //     required: true
+    // },
     title: {
         type: String,
         required: false
@@ -52,4 +52,4 @@ let ScheduleSchema = new Schema({
 });
 
 
-module.exports = mongoose.model('Schedule', ScheduleSchema);
+module.exports = mongoose.model('Event', EventSchema);

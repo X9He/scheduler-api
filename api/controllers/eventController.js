@@ -1,9 +1,9 @@
 'use strict';
 
-let mongoose = require('mongoose'), Schedule = mongoose.model('Schedule');
+let mongoose = require('mongoose'), Events = mongoose.model('Event');
 
 exports.list_all_schedules = function(req, res) {
-  Schedule.find({}, (err, schedule) => {
+  Events.find({}, (err, schedule) => {
     if (err) res.send(err);
     res.json(schedule);
   });
@@ -11,7 +11,7 @@ exports.list_all_schedules = function(req, res) {
 
 
 exports.create_a_schedule = function(req, res) {
-  var new_Schedule = new Schedule(req.body);
+  let new_Schedule = new Events(req.body);
   new_Schedule.save(function(err, schedule) {
     if (err)
       res.send(err);
@@ -21,7 +21,7 @@ exports.create_a_schedule = function(req, res) {
 
 
 exports.read_a_schedule = function(req, res) {
-  Schedule.findById(req.params.scheduleId, function(err, schedule) {
+  Events.findById(req.params.scheduleId, function(err, schedule) {
     if (err)
       res.send(err);
     res.json(schedule);
@@ -30,7 +30,7 @@ exports.read_a_schedule = function(req, res) {
 
 
 exports.update_a_schedule = function(req, res) {
-  Schedule.findOneAndUpdate({_id: req.params.scheduleId}, req.body, {new: true}, function(err, schedule) {
+  Events.findOneAndUpdate({_id: req.params.scheduleId}, req.body, {new: true}, function(err, schedule) {
     if (err)
       res.send(err);
     res.json(schedule);
@@ -39,7 +39,7 @@ exports.update_a_schedule = function(req, res) {
 
 
 exports.delete_a_schedule = function(req, res) {
-  Schedule.remove({
+  Events.remove({
     _id: req.params.scheduleId
   }, function(err, schedule) {
     if (err)

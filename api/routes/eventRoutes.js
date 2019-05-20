@@ -1,15 +1,15 @@
 'use strict';
 module.exports = function(app) {
-  let schedule = require('../controllers/schedulerController');
+  let event = require('../controllers/eventController');
 
   // schedule Routes
-  app.route('/schedule')
-    .get(schedule.list_all_schedules)
-    .post(schedule.create_a_schedule);
+  app.route('/event')
+    .get(event.list_all_schedules)
+    .post(event.create_a_schedule);
 
 
-  app.route('/schedule/:scheduleId')
-    .get(schedule.read_a_schedule)
-    .put(schedule.update_a_schedule)
-    .delete(schedule.delete_a_schedule);
+  app.route('/event/:eventId')
+    .get(event.read_a_schedule)
+    .put(event.update_a_schedule)
+    .delete(event.delete_a_schedule);
 };
