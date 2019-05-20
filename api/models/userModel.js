@@ -1,6 +1,7 @@
 'use strict';
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
+let bcrypt = require('bcryptjs')
 
 const userSchema = new Schema(
     {
@@ -37,7 +38,9 @@ const userSchema = new Schema(
 userSchema.pre('save', async function (next) {
   const user = this;
 
-  console.log('middleware for user is called');
+  if (user.isModified('password')){
+      user.password = await bcrypt.hash(user.password, 8)
+  }
 
   next()
 });
