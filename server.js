@@ -24,7 +24,5 @@ userRoutes(app);
 
 app.listen(port);
 
-const bcrypt = require('bcryptjs');
-
 
 console.log('scheduler RESTful API server started on: ' + port);
