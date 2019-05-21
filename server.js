@@ -18,6 +18,11 @@ mongoose.connect('mongodb://localhost:27017/scheduleDB', { useNewUrlParser: true
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+  console.log(req.method, req.path)
+  next()
+});
+
 eventRoutes(app);
 userRoutes(app);
 

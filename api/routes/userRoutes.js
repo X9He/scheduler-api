@@ -1,5 +1,7 @@
 'use strict';
+
 module.exports = function(app) {
+    const auth = require('../middleware/authentication');
     let user = require('../controllers/userController');
 
     // schedule Routes
@@ -9,9 +11,12 @@ module.exports = function(app) {
     app.route('/user/login')
         .post(user.login);
 
+    app.route('/user/me')
+        .get(auth, user.getUser);
+
     app.route('/user/:id')
-        .post(user.update)
-        .delete(user.delete);
+        .post(auth, user.update)
+        .delete(auth, user.delete);
 
 
     // app.route('/user/signout')

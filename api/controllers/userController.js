@@ -65,3 +65,14 @@ exports.login = async function (req, res) {
         res.status(400).send()
     }
 };
+
+exports.getUser = async function (req, res) {
+    try {
+        if (!req.user) {
+            return res.status(404).send()
+        }
+        res.send(req.user)
+    } catch (e) {
+        res.status(500).send()
+    }
+};
