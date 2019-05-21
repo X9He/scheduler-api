@@ -11,6 +11,12 @@ module.exports = function(app) {
     app.route('/user/login')
         .post(user.login);
 
+    app.route('/user/logout')
+        .post(auth, user.logout);
+
+    app.route('/user/logoutall')
+        .post(auth, user.logoutAll);
+
     app.route('/user/me')
         .get(auth, user.getUser);
 

@@ -76,3 +76,28 @@ exports.getUser = async function (req, res) {
         res.status(500).send()
     }
 };
+
+exports.logout = async function (req, res) {
+    try {
+        req.user.tokens = req.user.tokens.filter((token) => {
+            return token.token !== req.token
+        })
+        await req.user.save()
+
+        res.send()
+    } catch (e) {
+        res.status(500).send()
+    }
+};
+
+
+exports.logoutAll = async function (req, res) {
+    try {
+        req.user.tokens = []
+        await req.user.save()
+
+        res.send()
+    } catch (e) {
+        res.status(500).send()
+    }
+}
