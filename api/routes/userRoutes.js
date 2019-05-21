@@ -6,15 +6,14 @@ module.exports = function(app) {
     app.route('/user/create')
         .post(user.create);
 
+    app.route('/user/login')
+        .post(user.login);
 
     app.route('/user/:id')
         .post(user.update)
         .delete(user.delete);
 
-    // app.route('/user/signin')
-    //     .put(user.signin);
-    //
-    //
+
     // app.route('/user/signout')
     //     .put(user.signout);
 };

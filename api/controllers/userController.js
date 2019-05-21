@@ -53,4 +53,13 @@ exports.delete = async function (req, res) {
     } catch (e) {
         res.status(500).send()
     }
-}
+};
+
+exports.login = async function (req, res) {
+    try {
+        const user = await User.findByCredentials(req.body.email, req.body.password)
+        res.send(user)
+    } catch (e) {
+        res.status(400).send()
+    }
+};
